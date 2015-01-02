@@ -1,31 +1,36 @@
 # Catlogic
 
-TODO: Write a gem description
-
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'catlogic'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install catlogic
+    gem install catlogic
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'catlogic'
 
-## Contributing
+    # create a categorical proposition
+    proposition = Proposition.new(Quantity.new("Universal"), Term.new("Dogs), Quality.new("Affirmative"), Term.new("Mortal"), true)
+    
+    # get the type of the proposition
+    proposition.type
+    
+	#get a human readable form of the proposition
+	propostion.label
+	
+	#make immediate inferences
+	#obverse
+	proposition.obverse
+    
+    # Build a proposition from its type
+    proposition = PropositionType.new("I").proposition
+    
+	# Build a syllogism
+	syllogism = Syllogism.new(majorproposition, minorproposition, conclusion)
+    
+    # Test the validity of a syllogism
+    syllogism.validity
+    
+    # Get form of syllogism
+    syllogism.form
+    
 
-1. Fork it ( https://github.com/[my-github-username]/catlogic/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
