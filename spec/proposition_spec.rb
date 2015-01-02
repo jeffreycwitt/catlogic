@@ -212,4 +212,19 @@ describe 'proposition object' do
 
       result.should == false
   end
+
+  it 'can return answer false for two propositions that are not identical' do
+        prop1 = Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
+        prop2 = Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true)
+        result = prop1.same_as?(prop2)
+        result.should == false
+  end
+  it 'can return answer true for two propositions that are identical' do
+    prop1 = Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
+    prop2 = Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
+    result = prop1.same_as?(prop2)
+    result.should == true
+  end
+
+
 end

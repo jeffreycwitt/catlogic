@@ -155,6 +155,18 @@ class Proposition
     return distribution
   end
 
+  def same_as?(proposition)
+    if (proposition.quantity.label == self.quantity.label &&
+        proposition.subject.label == self.subject.label &&
+        proposition.quality.label == self.quality.label &&
+        proposition.predicate.label == self.predicate.label &&
+        proposition.truthvalue == self.truthvalue)
+      true
+    else
+      false
+    end
+  end
+
   def unique?(set)
     numerofoccurences = self.number_of_occurences(set)
     if numerofoccurences == 0
@@ -167,11 +179,7 @@ class Proposition
   def number_of_occurences(set)
     @occurences = 0
     set.each do |proposition|
-      if (proposition.quantity.label == self.quantity.label && 
-        proposition.subject.label == self.subject.label && 
-        proposition.quality.label == self.quality.label && 
-        proposition.predicate.label == self.predicate.label && 
-        proposition.truthvalue == self.truthvalue)
+      if self.same_as?(proposition)
         @occurences += 1
       end
     end
