@@ -19,4 +19,9 @@ describe "form object" do
 
     major.label == "All M are P" && minor.label == "All S are M" && conclusion.label == "All S are P"
   end
+
+  it "should return the name 'Barbara' for a AAA1 syllogism" do 
+    name = $form.name
+    name.should == "Barbara"
+  end
 end

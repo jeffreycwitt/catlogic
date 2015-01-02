@@ -21,7 +21,7 @@ numberArray.each do |i|
 				form = Form.new(mood, Figure.new(i))
 	
 			if form.validity == true
-				puts form.label
+				puts form.label + " " + form.name
 			end
 		end
 	end
