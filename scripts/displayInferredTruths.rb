@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/catlog.rb"
+begin
+  require 'catlogic'
+rescue LoadError
+  require 'rubygems'
+  require 'catlogic'
+end
 
 premises2 = [Proposition.new("universal", "Mammals", "affirmative", "Mortal Things", true),
             Proposition.new("universal", "People", "affirmative", "Mammals", true)]

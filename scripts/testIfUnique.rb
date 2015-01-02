@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/catlogic.rb"
+begin
+  require 'catlogic'
+rescue LoadError
+  require 'rubygems'
+  require 'catlogic'
+end
 
 premisesArray = [Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true),
             Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true),

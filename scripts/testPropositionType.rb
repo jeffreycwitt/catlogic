@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/catlogic"
+begin
+  require 'catlogic'
+rescue LoadError
+  require 'rubygems'
+  require 'catlogic'
+end
 
 type = PropositionType.new("O", true)
 proposition = type.proposition

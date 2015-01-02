@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/catlog.rb"
+begin
+  require 'catlogic'
+rescue LoadError
+  require 'rubygems'
+  require 'catlogic'
+end
 
 typeArray = ["A", "E", "I", "O"]
 numberArray = [1,2,3,4]

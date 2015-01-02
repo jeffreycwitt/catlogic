@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/catlogic"
+begin
+  require 'catlogic'
+rescue LoadError
+  require 'rubygems'
+  require 'catlogic'
+end
 
 mood = Mood.new(PropositionType.new("A"), PropositionType.new("A"), PropositionType.new("A"))
 figure = Figure.new(3)

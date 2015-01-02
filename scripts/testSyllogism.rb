@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/catlogic"
+begin
+  require 'catlogic'
+rescue LoadError
+  require 'rubygems'
+  require 'catlogic'
+end
 
 major = Proposition.new(Quantity.new("universal"), Term.new("pollution free"), Quality.new("negative"), Term.new("completely efficient"), true)
 minor = Proposition.new(Quantity.new("universal"), Term.new("automobile"), Quality.new("negative"), Term.new("completely efficient"), true)
