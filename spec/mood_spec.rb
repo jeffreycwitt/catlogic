@@ -3,7 +3,7 @@ require "catlogic"
 
 describe "mood object" do
 
-  $moodobject_aaa = Mood.new(PropositionType.new('A'), PropositionType.new('A'), PropositionType.new('A'))
+  $moodobject_aaa = Catlogic::Mood.new(Catlogic::PropositionType.new('A'), Catlogic::PropositionType.new('A'), Catlogic::PropositionType.new('A'))
 
   it 'can display the label of the mood object' do
     mood = $moodobject_aaa.label

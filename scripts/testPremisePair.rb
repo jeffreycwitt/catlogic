@@ -7,9 +7,9 @@ rescue LoadError
   require 'catlogic'
 end
 
-premise1 = Proposition.new("universal", "Mammals", "affirmative", "Dogs", true)
-premise2 = Proposition.new("universal", "Mammals", "affirmative", "Mortal Things", true)
+premise1 = Catlogic::Proposition.new("universal", "Mammals", "affirmative", "Dogs", true)
+premise2 = Catlogic::Proposition.new("universal", "Mammals", "affirmative", "Mortal Things", true)
 
 
-pair = PremisePair.new(premise1, premise2)
+pair = Catlogic::PremisePair.new(premise1, premise2)
 puts pair.isThreeTermPair?;

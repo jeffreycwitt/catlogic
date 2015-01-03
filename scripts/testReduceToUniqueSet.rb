@@ -7,14 +7,14 @@ rescue LoadError
   require 'catlogic'
 end
 
-premisesArray = [Proposition.new("universal", "Events", "affirmative", "Caused Happenings", true),
-                 Proposition.new("universal", "Free Decisions", "negative", "Caused Happenings", true),
-                 Proposition.new("universal", "Fun", "affirmative", "Events", true),
-                 Proposition.new("universal", "Fun", "affirmative", "Events", true),
-                 Proposition.new("universal", "Fun", "affirmative", "Events", true)]
+premisesArray = [Catlogic::Proposition.new("universal", "Events", "affirmative", "Caused Happenings", true),
+                 Catlogic::Proposition.new("universal", "Free Decisions", "negative", "Caused Happenings", true),
+                 Catlogic::Proposition.new("universal", "Fun", "affirmative", "Events", true),
+                 Catlogic::Proposition.new("universal", "Fun", "affirmative", "Events", true),
+                 Catlogic::Proposition.new("universal", "Fun", "affirmative", "Events", true)]
 
 
-collection = PremiseCollection.new(premisesArray)
+collection = Catlogic::PremiseCollection.new(premisesArray)
 
 reducedcollection = collection.reduceToUniqueSet
 

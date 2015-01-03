@@ -1,16 +1,21 @@
-class Quantity
-  attr_reader :label
+module Catlogic
+  class Quantity
+    attr_reader :label
 
-  def initialize(quantity)
-    @label = quantity
-  end
-
-  def opposite
-    if self.label == 'universal'
-      quantityopposite = Quantity.new('particular')
-    elsif self.label == 'particular'
-      quantityopposite = Quantity.new('universal')
+    def initialize(quantity)
+      @label = quantity
     end
-    return quantityopposite
+
+    def opposite
+      if self.label == 'universal'
+        quantityopposite = Quantity.new('particular')
+      elsif self.label == 'particular'
+        quantityopposite = Quantity.new('universal')
+      end
+      return quantityopposite
+    end
+    def to_quantity
+      self
+    end
   end
 end

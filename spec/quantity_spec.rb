@@ -4,13 +4,13 @@ require 'pry'
 
 describe 'quantity object' do
   it 'can return quantity as string' do
-    quantity = Quantity.new('universal')
+    quantity = Catlogic::Quantity.new('universal')
     result = quantity.label
     result.should == 'universal'
   end
 
   it 'can return term opposite as string' do
-    quantity = Quantity.new('particular')
+    quantity = Catlogic::Quantity.new('particular')
     opposite = quantity.opposite
     result = opposite.label
 

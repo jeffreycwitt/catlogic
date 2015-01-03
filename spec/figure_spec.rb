@@ -2,7 +2,7 @@ require "spec_helper"
 require "catlogic"
 
 describe "figure object" do
-  $figure_1 = Figure.new(1)
+  $figure_1 = Catlogic::Figure.new(1)
 
   it "should return the label of the figure type object" do
     label = $figure_1.label

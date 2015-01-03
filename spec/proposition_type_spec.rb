@@ -2,10 +2,10 @@ require 'spec_helper'
 require 'catlogic'
 
 describe 'proposition_type object' do
-  $typeA = PropositionType.new("A")
-  $typeE = PropositionType.new("E")
-  $typeI = PropositionType.new("I")
-  $typeO = PropositionType.new("O")
+  $typeA = Catlogic::PropositionType.new("A")
+  $typeE = Catlogic::PropositionType.new("E")
+  $typeI = Catlogic::PropositionType.new("I")
+  $typeO = Catlogic::PropositionType.new("O")
 
   it 'can return the correct label for a proposition type A' do
     result = $typeA.label

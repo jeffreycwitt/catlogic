@@ -1,7 +1,7 @@
 require "catlogic/version"
 
-#module Catlogic
-	# Your code goes here...
+  require "catlogic/string"
+  require "catlogic/integer"
 	require "catlogic/distribution"
 	require "catlogic/quality"
 	require "catlogic/quantity"
@@ -14,4 +14,4 @@ require "catlogic/version"
 	require "catlogic/form"
 	require "catlogic/premise_pair"
 	require "catlogic/premise_collection"  
-#end
+

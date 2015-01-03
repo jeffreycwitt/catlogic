@@ -3,9 +3,9 @@ require 'catlogic'
 
 describe "premise pair object" do
 
-  	$major = Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Dogs"), true)
-	$minor = Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true)
-	$pair = PremisePair.new($major, $minor)
+  	$major = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Dogs"), true)
+	$minor = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true)
+	$pair = Catlogic::PremisePair.new($major, $minor)
 
   it 'can return the major proposition' do
     result = $pair.major
@@ -23,18 +23,18 @@ describe "premise pair object" do
   end
 
   it 'can return false result when this pair has only two distinct terms' do
-  	major = Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Dogs"), true)
-	minor = Proposition.new(Quantity.new("universal"), Term.new("Dogs"), Quality.new("affirmative"), Term.new("Mammals"), true)
-	pair = PremisePair.new(major, minor)
+  	major = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Dogs"), true)
+	minor = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Dogs"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true)
+	pair = Catlogic::PremisePair.new(major, minor)
 
   	result = pair.three_term_pair?
   	result.should == false
   end
 
   it 'can return false result when this pair has only four distinct terms' do
-  	major = Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Dogs"), true)
-	minor = Proposition.new(Quantity.new("universal"), Term.new("Cats"), Quality.new("affirmative"), Term.new("Wicked"), true)
-	pair = PremisePair.new(major, minor)
+  	major = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Dogs"), true)
+	minor = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Cats"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Wicked"), true)
+	pair = Catlogic::PremisePair.new(major, minor)
 
   	result = pair.three_term_pair?
   	result.should == false

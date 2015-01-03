@@ -4,20 +4,20 @@ require 'pry'
 
 describe 'distribution object' do
   it 'can return distribution label as string' do
-    term = Distribution.new('distributed')
+    term = Catlogic::Distribution.new('distributed')
     result = term.label
     result.should == 'distributed'
   end
 
   it 'can return distribution opposite label as string' do
-    term = Distribution.new('distributed')
+    term = Catlogic::Distribution.new('distributed')
     opposite = term.opposite
     result = opposite.label
     result.should == 'undistributed'
   end
 
   it 'can return undistributed opposite label as string' do
-    term = Distribution.new('undistributed')
+    term = Catlogic::Distribution.new('undistributed')
     opposite = term.opposite
     result = opposite.label
     result.should == 'distributed'

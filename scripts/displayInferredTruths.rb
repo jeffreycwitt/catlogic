@@ -7,24 +7,24 @@ rescue LoadError
   require 'catlogic'
 end
 
-premises2 = [Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-            Proposition.new(Quantity.new("universal"), Term.new("People"), Quality.new("affirmative"), Term.new("Mammals"), true)]
+premises2 = [Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+            Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("People"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true)]
 
-premises3 = [Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-            Proposition.new(Quantity.new("universal"), Term.new("People"), Quality.new("affirmative"), Term.new("Mammals"), true), 
-            Proposition.new(Quantity.new("universal"), Term.new("Ants"), Quality.new("negative"), Term.new("Mammals"), true)]
+premises3 = [Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+            Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("People"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true),
+            Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Ants"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Mammals"), true)]
 
 
-premises4 = [Proposition.new(Quantity.new("universal"), Term.new("planes"), Quality.new("affirmative"), Term.new("things with wings"), true),
-            Proposition.new(Quantity.new("particular"), Term.new("planes"), Quality.new("affirmative"), Term.new("things with propellors"), true),
-            Proposition.new(Quantity.new("universal"), Term.new("pilots"), Quality.new("affirmative"), Term.new("things that fly planes"), true),
-            Proposition.new(Quantity.new("universal"), Term.new("things that fly planes"), Quality.new("affirmative"), Term.new("tall things"), true)]
+premises4 = [Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("planes"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("things with wings"), true),
+            Catlogic::Proposition.new(Catlogic::Quantity.new("particular"), Catlogic::Term.new("planes"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("things with propellors"), true),
+            Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("pilots"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("things that fly planes"), true),
+            Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("things that fly planes"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("tall things"), true)]
 
-premises5 = [Proposition.new("universal", "dogs", "affirmative", "animals", true),
-            Proposition.new("universal", "cats", "affirmative", "animals", true),
-            Proposition.new("universal", "animals", "affirmative", "mortals", true),
-            Proposition.new("universal", "mortals", "affirmative", "things that disintegrate", true),
-            Proposition.new("particular", "dogs", "affirmative", "brown", true)]
+premises5 = [Catlogic::Proposition.new("universal", "dogs", "affirmative", "animals", true),
+            Catlogic::Proposition.new("universal", "cats", "affirmative", "animals", true),
+            Catlogic::Proposition.new("universal", "animals", "affirmative", "mortals", true),
+            Catlogic::Proposition.new("universal", "mortals", "affirmative", "things that disintegrate", true),
+            Catlogic::Proposition.new("particular", "dogs", "affirmative", "brown", true)]
             
 def display_inferences(collection, iteration) 
   puts "==============="
@@ -52,7 +52,7 @@ def combine_sets(oldarray, newarray)
 end
 
 #Set up        	
-collection = PremiseCollection.new(premises4)
+collection = Catlogic::PremiseCollection.new(premises4)
 puts ""
 puts "==============="
 puts "Initial Set"
@@ -75,7 +75,7 @@ while (collection.inferred_truths_new.count != 0)
   iteration += 1
   
   combinedset = combine_sets(collection.unique_propositions, collection.inferred_truths_new)
-  collection = PremiseCollection.new(combinedset)
+  collection = Catlogic::PremiseCollection.new(combinedset)
   
 end
 

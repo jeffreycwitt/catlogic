@@ -2,9 +2,9 @@ require 'spec_helper'
 require 'catlogic'
 
 describe 'proposition object' do
-  $propositionAtrue = Proposition.new(Quantity.new("universal"), Term.new('dogs'), Quality.new("affirmative"), Term.new('mortal things'), true)
-  $propositionIfalse = Proposition.new(Quantity.new("particular"), Term.new('dogs'), Quality.new("affirmative"), Term.new('mortal things'), false)
-  $propositionItrue = Proposition.new(Quantity.new("particular"), Term.new('dogs'), Quality.new("affirmative"), Term.new('mortal things'), true)
+  $propositionAtrue = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new('dogs'), Catlogic::Quality.new("affirmative"), Catlogic::Term.new('mortal things'), true)
+  $propositionIfalse = Catlogic::Proposition.new(Catlogic::Quantity.new("particular"), Catlogic::Term.new('dogs'), Catlogic::Quality.new("affirmative"), Catlogic::Term.new('mortal things'), false)
+  $propositionItrue = Catlogic::Proposition.new(Catlogic::Quantity.new("particular"), Catlogic::Term.new('dogs'), Catlogic::Quality.new("affirmative"), Catlogic::Term.new('mortal things'), true)
   it 'can return the quantity' do
     result = $propositionAtrue.quantity
     result.label.should == 'universal'
@@ -136,7 +136,7 @@ describe 'proposition object' do
         truthvalue.should == true
   end
   it 'can return the correct position of a designated middle term -- in this case dogs' do
-    middleterm = Term.new('dogs')
+    middleterm = Catlogic::Term.new('dogs')
     position = $propositionAtrue.position_of_term(middleterm)
     position.should == 'subject'
   end
@@ -161,12 +161,12 @@ describe 'proposition object' do
 
   it 'can identify that a given proposition is repeated one time in given array' do 
     premisesArray = [
-      Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true), 
-      Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true),
-      Proposition.new(Quantity.new("universal"), Term.new("Fun"), Quality.new("affirmative"), Term.new("Events"), true)
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Events"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Fun"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Events"), true)
     ]
       
-      proposition = Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true)
+      proposition = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), true)
       
       result = proposition.number_of_occurences(premisesArray)
       result.should == 1
@@ -174,12 +174,12 @@ describe 'proposition object' do
 
   it 'can identify that a given proposition is repeated zero times in given array' do 
     premisesArray = [
-      Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true), 
-      Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true),
-      Proposition.new(Quantity.new("universal"), Term.new("Fun"), Quality.new("affirmative"), Term.new("Events"), true)
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Events"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Fun"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Events"), true)
     ]
       
-      proposition = Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
+      proposition = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true)
       
       result = proposition.number_of_occurences(premisesArray)
       result.should == 0
@@ -187,12 +187,12 @@ describe 'proposition object' do
   it 'can return answer true when proposition is unique (not included) in a given set' do
 
     premisesArray = [
-      Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true), 
-      Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true),
-      Proposition.new(Quantity.new("universal"), Term.new("Fun"), Quality.new("affirmative"), Term.new("Events"), true)
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Events"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Fun"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Events"), true)
     ]
       
-      proposition = Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
+      proposition = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true)
 
       result = proposition.unique?(premisesArray)
 
@@ -201,12 +201,12 @@ describe 'proposition object' do
   it 'can return answer false when proposition is not unique (i.e. is included) in a given set' do
 
     premisesArray = [
-      Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true), 
-      Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true),
-      Proposition.new(Quantity.new("universal"), Term.new("Fun"), Quality.new("affirmative"), Term.new("Events"), true)
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Events"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), true),
+      Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Fun"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Events"), true)
     ]
       
-      proposition = Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true)
+      proposition = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), true)
 
       result = proposition.unique?(premisesArray)
 
@@ -214,14 +214,14 @@ describe 'proposition object' do
   end
 
   it 'can return answer false for two propositions that are not identical' do
-        prop1 = Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
-        prop2 = Proposition.new(Quantity.new("universal"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), true)
+        prop1 = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Events"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true)
+        prop2 = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), true)
         result = prop1.same_as?(prop2)
         result.should == false
   end
   it 'can return answer true for two propositions that are identical' do
-    prop1 = Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
-    prop2 = Proposition.new(Quantity.new("universal"), Term.new("Events"), Quality.new("affirmative"), Term.new("Caused Happenings"), true)
+    prop1 = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Events"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true)
+    prop2 = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Events"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Caused Happenings"), true)
     result = prop1.same_as?(prop2)
     result.should == true
   end

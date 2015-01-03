@@ -7,9 +7,9 @@ rescue LoadError
   require 'catlogic'
 end
 
-mood = Mood.new(PropositionType.new("A"), PropositionType.new("A"), PropositionType.new("A"))
-figure = Figure.new(3)
-form = Form.new(mood, figure)
+mood = Catlogic::Mood.new(Catlogic::PropositionType.new("A"), Catlogic::PropositionType.new("A"), Catlogic::PropositionType.new("A"))
+figure = Catlogic::Figure.new(3)
+form = Catlogic::Form.new(mood, figure)
 puts "====================="
 puts "Testing: #{form.label}"
 

@@ -7,17 +7,17 @@ rescue LoadError
   require 'catlogic'
 end
 
-major = Proposition.new(Quantity.new("universal"), Term.new("pollution free"), Quality.new("negative"), Term.new("completely efficient"), true)
-minor = Proposition.new(Quantity.new("universal"), Term.new("automobile"), Quality.new("negative"), Term.new("completely efficient"), true)
-conclusion = Proposition.new(Quantity.new("universal"), Term.new("automobile"), Quality.new("negative"), Term.new("pollution free"), true)
-syllogism = Syllogism.new(major, minor, conclusion)
+major = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("pollution free"), Catlogic::Quality.new("negative"), Catlogic::Term.new("completely efficient"), true)
+minor = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("automobile"), Catlogic::Quality.new("negative"), Catlogic::Term.new("completely efficient"), true)
+conclusion = Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("automobile"), Catlogic::Quality.new("negative"), Catlogic::Term.new("pollution free"), true)
+syllogism = Catlogic::Syllogism.new(major, minor, conclusion)
 
 puts "=========="
 puts "Testing syllogism (#{syllogism.form.label}):"
 puts "====Syllogism======"
 puts syllogism.label
 puts "====Propositional Form===="
-puts Form.new(syllogism.mood, syllogism.figure).syllogism.label
+puts Catlogic::Form.new(syllogism.mood, syllogism.figure).syllogism.label
 puts "=====Validity===="
 puts "Validity: #{syllogism.validity}"
 puts "=========="

@@ -17,8 +17,8 @@ numberArray.each do |i|
 
 		typeArray.each do |secondtype|
 			typeArray.each do |thirdtype|
-        mood = Mood.new(PropositionType.new(type), PropositionType.new(secondtype), PropositionType.new(thirdtype))
-				form = Form.new(mood, Figure.new(i))
+        mood = Catlogic::Mood.new(Catlogic::PropositionType.new(type), Catlogic::PropositionType.new(secondtype), Catlogic::PropositionType.new(thirdtype))
+				form = Catlogic::Form.new(mood, Catlogic::Figure.new(i))
 	
 			if form.validity == true
 				puts form.label + " " + form.name

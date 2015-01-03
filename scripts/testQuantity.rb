@@ -7,6 +7,6 @@ rescue LoadError
   require 'catlogic'
 end
 
-quantity = Quantity.new("universal")
+quantity = Catlogic::Quantity.new("universal")
 
 puts quantity.label

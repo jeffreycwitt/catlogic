@@ -7,7 +7,7 @@ rescue LoadError
   require 'catlogic'
 end
 
-type = PropositionType.new("O", true)
+type = Catlogic::PropositionType.new("O", true)
 proposition = type.proposition
 
 ## this is repeated from testProposition.rb

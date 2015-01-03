@@ -3,16 +3,16 @@ require "catlogic"
 
 describe "syllogism object" do 
 
-	$majorproposition = Proposition.new(Quantity.new('universal'), Term.new('mortal things'), Quality.new('affirmative'), Term.new('dogs'), true)
-	$minorproposition = Proposition.new(Quantity.new('universal'), Term.new('living things'), Quality.new('affirmative'), Term.new('mortal things'), true)
-	$conclusionproposition = Proposition.new(Quantity.new('universal'), Term.new('living things'), Quality.new('affirmative'), Term.new('dogs'), true)
-	$syllogism_aaa1 = Syllogism.new($majorproposition, $minorproposition, $conclusionproposition)
-  $syllogism_aaa4 = Syllogism.new($minorproposition, $majorproposition, $conclusionproposition)
+	$majorproposition = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('mortal things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('dogs'), true)
+	$minorproposition = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('living things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('mortal things'), true)
+	$conclusionproposition = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('living things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('dogs'), true)
+	$syllogism_aaa1 = Catlogic::Syllogism.new($majorproposition, $minorproposition, $conclusionproposition)
+  $syllogism_aaa4 = Catlogic::Syllogism.new($minorproposition, $majorproposition, $conclusionproposition)
 
-  $majorproposition2 = Proposition.new(Quantity.new('universal'), Term.new('dogs'), Quality.new('affirmative'), Term.new('mortal things'), true)
-  $minorproposition2 = Proposition.new(Quantity.new('universal'), Term.new('living things'), Quality.new('affirmative'), Term.new('mortal things'), true)
-  $conclusionproposition2 = Proposition.new(Quantity.new('universal'), Term.new('living things'), Quality.new('affirmative'), Term.new('dogs'), true)
-  $syllogism_aaa2 = Syllogism.new($majorproposition2, $minorproposition2, $conclusionproposition2)
+  $majorproposition2 = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('dogs'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('mortal things'), true)
+  $minorproposition2 = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('living things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('mortal things'), true)
+  $conclusionproposition2 = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('living things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('dogs'), true)
+  $syllogism_aaa2 = Catlogic::Syllogism.new($majorproposition2, $minorproposition2, $conclusionproposition2)
 
 	it 'can retrieve the middle term' do
 		
@@ -21,10 +21,10 @@ describe "syllogism object" do
 	end
 
   it 'can return error if not trying to get middle on non three-term syllogism' do
-    majorproposition = Proposition.new(Quantity.new('universal'), Term.new('mortal things'), Quality.new('affirmative'), Term.new('living things'), true)
-    minorproposition = Proposition.new(Quantity.new('universal'), Term.new('living things'), Quality.new('affirmative'), Term.new('mortal things'), true)
-    conclusionproposition = Proposition.new(Quantity.new('universal'), Term.new('living things'), Quality.new('affirmative'), Term.new('dogs'), true)
-    syllogism_test = Syllogism.new(majorproposition, minorproposition, conclusionproposition)
+    majorproposition = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('mortal things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('living things'), true)
+    minorproposition = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('living things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('mortal things'), true)
+    conclusionproposition = Catlogic::Proposition.new(Catlogic::Quantity.new('universal'), Catlogic::Term.new('living things'), Catlogic::Quality.new('affirmative'), Catlogic::Term.new('dogs'), true)
+    syllogism_test = Catlogic::Syllogism.new(majorproposition, minorproposition, conclusionproposition)
 
     middleterm = syllogism_test.middle
     middleterm.should == 'Error: this is not a three term syllogism'

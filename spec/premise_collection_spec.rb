@@ -4,21 +4,21 @@ require 'catlogic'
 describe "premise collection object" do
 
   
-  $collection2 = PremiseCollection.new([Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-               Proposition.new(Quantity.new("universal"), Term.new("People"), Quality.new("affirmative"), Term.new("Mammals"), true)])
+  $collection2 = Catlogic::PremiseCollection.new([Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+               Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("People"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true)])
 
-  $collection3 = PremiseCollection.new([Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-                Proposition.new(Quantity.new("universal"), Term.new("People"), Quality.new("affirmative"), Term.new("Mammals"), true),
-                Proposition.new(Quantity.new("universal"), Term.new("Ants"), Quality.new("negative"), Term.new("People"), true)])
+  $collection3 = Catlogic::PremiseCollection.new([Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+                Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("People"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true),
+                Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Ants"), Catlogic::Quality.new("negative"), Catlogic::Term.new("People"), true)])
 
-  $collection3repeat = PremiseCollection.new([Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-                Proposition.new(Quantity.new("universal"), Term.new("People"), Quality.new("affirmative"), Term.new("Mammals"), true),
-                Proposition.new(Quantity.new("universal"), Term.new("People"), Quality.new("affirmative"), Term.new("Mammals"), true)])
+  $collection3repeat = Catlogic::PremiseCollection.new([Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+                Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("People"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true),
+                Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("People"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true)])
 
-  $collection4 = PremiseCollection.new([Proposition.new(Quantity.new("universal"), Term.new("Dogs"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-                Proposition.new(Quantity.new("universal"), Term.new("People"), Quality.new("affirmative"), Term.new("Mammals"), true),
-                Proposition.new(Quantity.new("universal"), Term.new("Ants"), Quality.new("negative"), Term.new("Cats"), true),
-                Proposition.new(Quantity.new("universal"), Term.new("Zebras"), Quality.new("negative"), Term.new("Whales"), true)])
+  $collection4 = Catlogic::PremiseCollection.new([Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Dogs"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+                Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("People"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mammals"), true),
+                Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Ants"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Cats"), true),
+                Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Zebras"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Whales"), true)])
 
   it "should confirm that there are two or more premises in the collection" do
     result = $collection2.at_least_two?
@@ -46,9 +46,9 @@ describe "premise collection object" do
 
 ## testing unique set method
   it 'should reduce non-unique collection to a new collection with unique propositions only and should have a count of 2' do
-    collection = PremiseCollection.new([Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-                                          Proposition.new(Quantity.new("universal"), Term.new("Mammals"), Quality.new("affirmative"), Term.new("Mortal Things"), true),
-                                          Proposition.new(Quantity.new("universal"), Term.new("Ants"), Quality.new("Negative"), Term.new("Mammals"), true)])
+    collection = Catlogic::PremiseCollection.new([Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+                                          Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Mammals"), Catlogic::Quality.new("affirmative"), Catlogic::Term.new("Mortal Things"), true),
+                                          Catlogic::Proposition.new(Catlogic::Quantity.new("universal"), Catlogic::Term.new("Ants"), Catlogic::Quality.new("Negative"), Catlogic::Term.new("Mammals"), true)])
     result = collection.unique_set
     result.size.should == 2
 

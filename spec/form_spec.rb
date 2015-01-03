@@ -2,9 +2,9 @@ require "spec_helper"
 require "catlogic"
 
 describe "form object" do
-  mood_aaa = Mood.new(PropositionType.new('A'), PropositionType.new('A'), PropositionType.new('A'))
-  figure_1 = Figure.new(1)
-  $form = Form.new(mood_aaa, figure_1)
+  mood_aaa = Catlogic::Mood.new(Catlogic::PropositionType.new('A'), Catlogic::PropositionType.new('A'), Catlogic::PropositionType.new('A'))
+  figure_1 = Catlogic::Figure.new(1)
+  $form = Catlogic::Form.new(mood_aaa, figure_1)
 
   it "should return form label" do
     label = $form.label

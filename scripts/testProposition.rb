@@ -7,7 +7,7 @@ rescue LoadError
   require 'catlogic'
 end
 
-proposition = Proposition.new(Quantity.new("particular"), Term.new("Free Decisions"), Quality.new("negative"), Term.new("Caused Happenings"), false)
+proposition = Catlogic::Proposition.new(Catlogic::Quantity.new("particular"), Catlogic::Term.new("Free Decisions"), Catlogic::Quality.new("negative"), Catlogic::Term.new("Caused Happenings"), false)
 
 #converse = proposition.getContrapolated
 #converse.displayProposition

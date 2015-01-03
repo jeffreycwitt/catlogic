@@ -9,7 +9,7 @@
     require 'catlogic'
 
     # create a categorical proposition
-    proposition = Proposition.new(Quantity.new("Universal"), Term.new("Dogs), Quality.new("Affirmative"), Term.new("Mortal"), true)
+    proposition = Proposition.new(Quantity.new("Universal"), Term.new("Dogs), Catlogic::Quality.new("Affirmative"), Term.new("Mortal"), true)
     
     # get the type of the proposition
     proposition.type
