@@ -45,6 +45,11 @@ describe "premise pair object" do
   	result.label.should == "Mammals"
   end
 
+  it 'can retrieve possible conclusions for a premise pair' do 
+    result = $pair.possible_conclusions
+    result.count.should == 4
+  end
+
   
 
 

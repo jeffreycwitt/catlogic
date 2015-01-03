@@ -50,12 +50,13 @@ class PremisePair
 
 # still need a test for this
   def possible_conclusions
-    @possible_conclusions = [
-        Proposition.new(Quantity.new("universal"), self.minor, Quality.new("affirmative"), self.minor, true),
-        Proposition.new(Quantity.new("universal"), self.minor, Quality.new("negative"), self.minor, true),
-        Proposition.new(Quantity.new("particular"), self.minor, Quality.new("affirmative"), self.minor, true),
-        Proposition.new(Quantity.new("particular"), self.minor, Quality.new("negative"), self.minor, true)
+    possible_conclusions = [
+        Proposition.new(Quantity.new("universal"), self.minorterm, Quality.new("affirmative"), self.majorterm, true),
+        Proposition.new(Quantity.new("universal"), self.minorterm, Quality.new("negative"), self.majorterm, true),
+        Proposition.new(Quantity.new("particular"), self.minorterm, Quality.new("affirmative"), self.majorterm, true),
+        Proposition.new(Quantity.new("particular"), self.minorterm, Quality.new("negative"), self.majorterm, true)
     ]
+    return possible_conclusions
   end
 
 end
