@@ -92,6 +92,7 @@ describe "premise collection object" do
     result = $collection2.inferred_truths_all
     result.count.should == 3
   end
+  ## this test isn't very good since collection2 does not generate any repeat inferred truths.
   it 'should return unique valid inferred truths for AA (1) premise pair' do 
     result = $collection2.inferred_truths_new
     result.count.should == 3
