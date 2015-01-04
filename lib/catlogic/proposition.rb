@@ -3,7 +3,7 @@ module Catlogic
 
     attr_reader :quantity, :subject, :quality, :predicate, :truthvalue
 
-    def initialize(quantity, subject, quality, predicate, truthvalue)
+    def initialize(quantity, subject, quality, predicate, truthvalue=true)
       @quantity=quantity.to_quantity
       @subject=subject.to_term
       @quality=quality.to_quality
