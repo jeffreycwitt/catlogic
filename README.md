@@ -192,7 +192,7 @@ The validity method tests against six separate tests, that reduces to the 256 po
 	syllogism.neg_from_affirms_test
 	
 ### Syllogism Pairs and Syllogism Collections	
-This a more advanced use case. But it may happen that you have two or more premises and you want to actually compute possible syllogisms that can be constructed from this set and then tested for validity.
+This is a more advanced use case. But it may happen that you have two or more premises and you want to actually compute possible syllogisms that can be constructed from this set and then tested for validity.
 
 To do this you can create a PremisePair Object from two Proposition objects
 
