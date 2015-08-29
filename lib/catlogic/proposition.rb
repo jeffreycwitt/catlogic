@@ -57,7 +57,8 @@ module Catlogic
 
     def contrary
       if @quantity.label  == "particular"
-        abort("There is no contrary for this type of propostion. Try subcontrary")
+        puts
+        return "There is no contrary for this type of propostion. Try subcontrary"
       end
       quality = @quality.opposite
 
@@ -73,7 +74,8 @@ module Catlogic
 
     def subcontrary
       if @quantity.label  == "universal"
-        abort("There is no subcontrary for this type of propostion. Try contrary.")
+        puts "There is no subcontrary for this type of propostion. Try contrary."
+        return
       end
 
       quality = @quality.opposite
