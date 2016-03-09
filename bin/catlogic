@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+
+require "thor"
+require "catlogic"
+
+class CatlogicCLI < Thor 
+	desc "version", "ask for catlogic version"
+	def version
+		puts Catlogic::VERSION
+	end
+	desc "inference", "get immediate inferences from proposition type"
+	def inference(propositiontype)
+		type = Catlogic::PropositionType.new(propositiontype, true)
+		proposition = type.proposition
+		
+		puts "======Proposition========="
+		puts proposition.label
+		puts "======Proposition Type========="
+		puts "type: #{proposition.type.label}"
+		puts "======Assumed Truth Value========="
+		puts "assumed: #{proposition.truthvalue}"
+
+		puts "=====Immediate Inferences========="
+		contradictory = proposition.contradictory
+		if proposition.quantity.label == "universal"
+		  contrary_subcontrary = proposition.contrary
+		elsif proposition.quantity.label == "particular"
+		  contrary_subcontrary = proposition.subcontrary
+		end
+		subaltern = proposition.subaltern
+		converse = proposition.converse
+		obverse = proposition.obverse
+		contrapolated = proposition.contrapolated
+
+		puts "====contradictory: #{contradictory.type.label}: #{contradictory.truthvalue}==="
+		puts contradictory.label
+		puts "====contrary/subcontrary: #{contrary_subcontrary.type.label}: #{contrary_subcontrary.truthvalue}===="
+		puts contrary_subcontrary.label
+		puts "====subaltern: #{subaltern.type.label}: #{subaltern.truthvalue}===="
+		puts subaltern.label
+		puts "====converse: #{converse.type.label}: #{converse.truthvalue}===="
+		puts converse.label
+		puts "====obverse: #{obverse.type.label}: #{obverse.truthvalue}===="
+		puts obverse.label
+		puts "====contrapolated = #{contrapolated.type.label}: #{contrapolated.truthvalue}===="
+		puts contrapolated.label
+	end
+	desc "test", "test validity of syllogism form"
+	def test(mood, figure)
+		form = Catlogic::Form.new(mood, figure.to_i)
+		puts "====================="
+		puts "Testing: #{form.label}"
+
+		syllogism = form.syllogism
+
+		puts "=====Propositional form====="
+		puts form.syllogism.label
+
+		### This is redundant in testSyllogism ##
+		puts "=====Validity===="
+		puts "Validity: #{syllogism.validity}"
+
+
+		if (!syllogism.validity)
+			if (!syllogism.undistributed_middle_test) 
+				puts "undistributed_middle_test failed"
+				puts "=========="
+			end
+			if (!syllogism.illicit_major_test) 
+				puts "illicit_major_test failed"
+				puts "=========="
+			end
+			if (!syllogism.illicit_minor_test) 
+				puts "illicit_minor_test failed"
+				puts "=========="
+			end
+			if (!syllogism.exclusive_premises_test) 
+				puts "exclusive_premises_test failed"
+				puts "=========="
+			end
+			if (!syllogism.affirm_from_neg_test) 
+				puts "affirm_from_neg_test failed"
+				puts "=========="
+			end
+			if (!syllogism.neg_from_affirms_test) 
+				puts "neg_from_affirms_test"
+				puts "=========="
+			end    
+		end
+	end
+end
+
+CatlogicCLI.start(ARGV)
